@@ -13,7 +13,13 @@ import {
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const API_KEY = "03c866fa421c316a6574d9adf16dd504"
 const icons = {
-  "Clouds": "Cloudy"
+  Clouds: "cloudy",
+  Clear: "day-sunny",
+  Atmosphere: "cloudy-gusts",
+  Snow: "snow",
+  Rain: "rains",
+  Drizzle: "rain",
+  Thunderstorm: "lightning"
 }
 
 export default function App() {
@@ -77,11 +83,11 @@ export default function App() {
             <View style={{ 
               flexDirection: "row", 
               alignItems: "center", 
-              marginTop: 50,
+              width: "95%",
               justifyContent: "space-between" 
               }}>
               <Text style={styles.temp}>{parseFloat(day.temp.day).toFixed(1)}</Text>
-              <Fontisto name="cloudy" size={68} color="white" />
+              <Fontisto name={icons[day.weather[0].main]} size={68} color="white" />
             </View>
             <Text style={styles.description}>{day.weather[0].main}</Text>
             <Text style={styles.tinyText}>{day.weather[0].description}</Text>
